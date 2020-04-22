@@ -28,7 +28,7 @@ setup(name='varta-chat',
       install_requires=required,
 		entry_points={
           'console_scripts': [
-              'varta = client.__main__',
+              'varta = client.__main__:key_listener',
           ]
       },
       include_package_data=True,
