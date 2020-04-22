@@ -1,5 +1,4 @@
 from setuptools import setup, find_packages
-from pip.req import parse_requirements
 # from distutils.core import setup
 # import py2exe
 # import sys
@@ -7,8 +6,10 @@ import os
 del os.link
 
 # sys.setrecursionlimit(5000)
-install_reqs = parse_requirements('requirements.txt')
-reqs = [str(ir.req) for ir in install_reqs]
+
+with open('requirements.txt') as f:
+    required = f.read().splitlines()
+
 
 def readme():
     with open('README.md') as f:
@@ -24,7 +25,7 @@ setup(name='varta-chat',
       license='MIT',
       packages=find_packages(),
       
-      install_requires = reqs,
+      install_requires=required,
 		entry_points={
           'console_scripts': [
               'varta = client.__main__',
